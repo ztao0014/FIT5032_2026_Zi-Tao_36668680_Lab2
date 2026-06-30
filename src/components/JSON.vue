@@ -94,6 +94,28 @@
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
 
+      <!-- Class binding: highlight George Orwell using :class -->
+      <ul>
+        <li
+          v-for="author in authors"
+          :key="author.id"
+          :class="{ highlight: author.name === 'George Orwell' }"
+        >
+          {{ author.name }} ({{ author.birthYear }})
+        </li>
+      </ul>
+
+      <!-- Style binding: add inline style to george orwell -->
+      <p>
+        <span
+          v-for="author in authors"
+          :key="author.id"
+          :style="author.name === 'George Orwell' ? { fontWeight: 'bold', color: '#42b883', fontSize: '1.2em' } : {}"
+        >
+          {{ author.name }}
+          <span v-if="author !== authors[authors.length - 1]"> | </span>
+        </span>
+      </p>
     </section>
   </div>
 </template>
